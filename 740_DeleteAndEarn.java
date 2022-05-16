@@ -56,3 +56,19 @@ class Solution {
         return dp[10000];
     }
 }
+
+// =================================================
+
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        int count[] = new int[10002];
+        int dp[] = new int[10002];
+        for (int i = 0; i < nums.length; i++)
+            count[nums[i]]++;
+        dp[0] = 0;
+        dp[1] = 1 * count[1];
+        for (int i = 2; i < dp.length; i++)
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * count[i]);
+        return dp[10001];
+    }
+}
